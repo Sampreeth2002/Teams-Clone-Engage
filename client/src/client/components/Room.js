@@ -57,7 +57,7 @@ const Room = ({ roomName, token, handleLogout }) => {
   return (
     <div className="room">
       <h2>Room: {roomName}</h2>
-      <button onClick={() => copyToClipboard}>Copy Link</button>
+      {/* <button onClick={() => copyToClipboard}>Copy Link</button> */}
       <button onClick={handleLogout}>Log out</button>
       <div className="local-participant">
         {room ? (
