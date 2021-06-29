@@ -47,12 +47,12 @@ const Room = ({ roomName, token, handleLogout }) => {
     <Participant key={participant.sid} participant={participant} />
   ));
 
-  const copyToClipboard = (e) => {
-    this.textArea.select();
-    document.execCommand({ roomName });
-    e.target.focus();
-    // this.setState({ copySuccess: "Copied!" });
-  };
+  // const copyToClipboard = (e) => {
+  //   this.textArea.select();
+  //   document.execCommand({ roomName });
+  //   e.target.focus();
+  //   // this.setState({ copySuccess: "Copied!" });
+  // };
 
   return (
     <div className="room">
