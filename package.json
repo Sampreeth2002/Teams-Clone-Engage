@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
-    "start": "node-env-run server  | pino-colada",
+    "start": "node-env-run server | pino-colada",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
@@ -13,11 +13,20 @@
   "author": "Sampreeth",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-pino-logger": "^6.0.0",
+    "express-session": "^1.17.2",
+    "mongoose": "^5.13.0",
     "node-env-run": "^4.0.2",
     "npm-run-all": "^4.1.5",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0",
     "pino-colada": "^2.1.0",
     "twilio": "^3.64.0",
     "twilio-video": "^2.15.1"

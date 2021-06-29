@@ -1,8 +1,8 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import Lobby from "./Lobby";
 import Room from "./Room";
 import { v4 as uuidv4 } from "uuid";
-const VideoChat = ({ match }) => {
+const VideoChat = () => {
   const [username, setUsername] = useState("");
   const [roomName, setRoomName] = useState(uuidv4());
   const [token, setToken] = useState(null);
