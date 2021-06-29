@@ -27,12 +27,14 @@ app.use(pino);
 
 //Passport Intialization --start
 
-app.use(
-  cors({
-    origin: "https://localhost:3000",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://localhost:3000",
+//     credentials: true,
+//   })
+// );
+
+app.use(cors());
 
 app.use(
   session({
