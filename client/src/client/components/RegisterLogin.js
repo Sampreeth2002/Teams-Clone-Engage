@@ -1,32 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: 200,
+    },
+  },
+}));
 
 const RegisterLogin = () => {
   const [registerUserName, setRegisterUserName] = useState("");
-  const [LoginUserName, setLoginUserName] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-  const [LoginPassword, setLoginPassword] = useState("");
-  const [data, setData] = useState("");
-
-  const login = () => {
-    axios({
-      method: "POST",
-      data: {
-        username: LoginUserName,
-        password: LoginPassword,
-      },
-      withCredentials: true,
-      url: "/login",
-    })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+  const classes = useStyles();
   const register = () => {
     axios({
       method: "POST",
       data: {
         username: registerUserName,
         password: registerPassword,
+        email: registerEmail,
       },
       withCredentials: true,
       url: "/register",
@@ -34,58 +32,57 @@ const RegisterLogin = () => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
-  const getUser = () => {
-    axios({
-      method: "GET",
-      withCredentials: true,
-      url: "/user",
-    })
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
 
   return (
     <>
       <div>
-        <h1>This is Registration</h1>
-        <input
-          type="text"
-          placeholder="username"
-          onChange={(e) => setRegisterUserName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="password"
-          onChange={(e) => setRegisterPassword(e.target.value)}
-        />
-        <button type="submit" onClick={register}>
-          Submit
-        </button>
-      </div>
-
-      <div>
-        <h1>This is Login</h1>
-        <input
-          type="text"
-          placeholder="username"
-          onChange={(e) => setLoginUserName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="password"
-          onChange={(e) => setLoginPassword(e.target.value)}
-        />
-        <button type="submit" onClick={login}>
-          Submit
-        </button>
-      </div>
-
-      <div>
-        <h1>Get User</h1>
-        <button type="submit" onClick={getUser}>
-          Submit
-        </button>
-        {data.username ? <h1>Welcome Back {data.username} </h1> : null}
+        <h1>Register an Account</h1>
+        <form
+          className={classes.root}
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          <div>
+            <TextField
+              type="text"
+              placeholder="Email Id"
+              onChange={(e) => setRegisterEmail(e.target.value)}
+              // label="Outlined"
+              // variant="outlined"
+            />
+          </div>
+          <div>
+            <TextField
+              type="text"
+              placeholder="Username"
+              onChange={(e) => setRegisterUserName(e.target.value)}
+            />
+          </div>
+          <div>
+            <TextField
+              type="text"
+              placeholder="Password"
+              onChange={(e) => setRegisterPassword(e.target.value)}
+              // label="Outlined"
+              // variant="outlined"
+            />
+          </div>
+          <div>
+            <Button
+              type="submit"
+              onClick={register}
+              color="primary"
+              // variant="contained"
+            >
+              Submit
+            </Button>
+          </div>
+        </form>
       </div>
     </>
   );
