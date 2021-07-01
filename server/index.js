@@ -75,9 +75,6 @@ mongoose.set("useFindAndModify", false);
 //---------------------------------------------------------
 
 //Temporary Auth Routes --start
-app.get("/secret", (req, res) => {
-  res.send("This is secret page!!");
-});
 
 app.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -94,20 +91,24 @@ app.post("/login", (req, res, next) => {
 });
 
 app.post("/register", (req, res) => {
-  User.findOne({ username: req.body.username }, async (err, doc) => {
-    if (err) throw err;
-    if (doc) res.send("User Already Exists");
-    if (!doc) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const newUser = new User({
-        username: req.body.username,
-        password: hashedPassword,
-      });
+  User.findOne(
+    { username: req.body.username, email: req.body.email },
+    async (err, doc) => {
+      if (err) throw err;
+      if (doc) res.send("User Already Exists");
+      if (!doc) {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const newUser = new User({
+          username: req.body.username,
+          email: req.body.email,
+          password: hashedPassword,
+        });
 
-      await newUser.save();
-      res.send("User Created");
+        await newUser.save();
+        res.send("User Created");
+      }
     }
-  });
+  );
 });
 
 app.get("/user", (req, res) => {

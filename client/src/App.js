@@ -3,6 +3,7 @@ import "./App.css";
 import VideoChat from "./client/components/VideoChat";
 import JoinVideoChat from "./client/components/JoinVideoChat";
 import RegisterLogin from "./client/components/RegisterLogin";
+import Login from "./client/components/Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
@@ -13,11 +14,10 @@ const App = () => {
           <h1>Video Chat</h1>
         </header>
         <Switch>
-          {/* Creating Video Chat Link */}
           <Route path="/videoChat" exact component={VideoChat} />
-          {/* Joining through link */}
           <Route path="/videoChat/join/:id" component={JoinVideoChat} />
           <Route path="/register" component={RegisterLogin} />
+          <Route path="/login" component={Login} />
         </Switch>
       </div>
     </Router>
