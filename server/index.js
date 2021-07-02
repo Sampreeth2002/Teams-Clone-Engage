@@ -7,48 +7,28 @@ const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const passport = require("passport");
-//MongoDB Schema
-const User = require("./models/user");
-//MongoDB Schema
-const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
-const bcrypt = require("bcryptjs");
-const passportLocalMongoose = require("passport-local-mongoose");
-const session = require("express-session");
 require("dotenv").config();
 const app = express();
 
+//Routes
+const User = require("./models/user");
+const userRouter = require("./routes/User");
+//Routes
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(express.json());
 app.use(pino);
+app.use(cors());
 
 //---------------------------------------------------------
 
 //Passport Intialization --start
 
-// app.use(
-//   cors({
-//     origin: "https://localhost:3000",
-//     credentials: true,
-//   })
-// );
-
-app.use(cors());
-
-app.use(
-  session({
-    secret: "secretcode",
-    resave: true,
-    saveUninitialized: true,
-  })
-);
-
-app.use(cookieParser("secretcode"));
-app.use(passport.initialize());
-app.use(passport.session());
-
-require("./passportConfig")(passport);
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 //Passport Intialization --end
 
@@ -68,54 +48,11 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-mongoose.set("useFindAndModify", false);
+// mongoose.set("useFindAndModify", false);
 
 // Data Base Connection --end
 
 //---------------------------------------------------------
-
-//Temporary Auth Routes --start
-
-app.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) throw err;
-    if (!user) res.send("Wrong Credentails");
-    else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        res.send("Successfull login");
-        console.log(req.user);
-      });
-    }
-  })(req, res, next);
-});
-
-app.post("/register", (req, res) => {
-  User.findOne(
-    { username: req.body.username, email: req.body.email },
-    async (err, doc) => {
-      if (err) throw err;
-      if (doc) res.send("User Already Exists");
-      if (!doc) {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const newUser = new User({
-          username: req.body.username,
-          email: req.body.email,
-          password: hashedPassword,
-        });
-
-        await newUser.save();
-        res.send("User Created");
-      }
-    }
-  );
-});
-
-app.get("/user", (req, res) => {
-  res.send(req.user); //Entire Data
-});
-
-//Temporary Auth Routes --end
 
 //---------------------------------------------------------
 
@@ -132,6 +69,8 @@ const sendTokenResponse = (token, res) => {
 //---------------------------------------------------------
 
 //Routes
+
+app.use("/user", userRouter);
 
 app.get("/api/greeting", (req, res) => {
   const name = req.query.name || "World";

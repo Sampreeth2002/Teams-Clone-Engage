@@ -1,26 +1,32 @@
 import React from "react";
-import "./App.css";
-import VideoChat from "./client/components/VideoChat";
-import JoinVideoChat from "./client/components/JoinVideoChat";
-import RegisterLogin from "./client/components/RegisterLogin";
-import Login from "./client/components/Login";
+import Navbar from "./components/Navbar";
+import VideoChat from "./components/VideoChat";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import JoinVideoChat from "./components/JoinVideoChat";
+import AuthProvider from "./Context/AuthContext";
+import PrivateRoute from "./hocs/PrivateRoute";
+import UnPrivateRoute from "./hocs/UnPrivateRoute";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
 
 const App = () => {
   return (
-    <Router>
-      <div className="app">
-        <header>
-          <h1>Video Chat</h1>
-        </header>
-        <Switch>
-          <Route path="/videoChat" exact component={VideoChat} />
-          <Route path="/videoChat/join/:id" component={JoinVideoChat} />
-          <Route path="/register" component={RegisterLogin} />
-          <Route path="/login" component={Login} />
-        </Switch>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="app">
+          <Navbar />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <UnPrivateRoute path="/login" component={Login} />
+            <UnPrivateRoute path="/register" component={Register} />
+            <PrivateRoute path="/videoChat" exact component={VideoChat} />
+            <Route path="/videoChat/join/:id" component={JoinVideoChat} />
+          </Switch>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 };
 

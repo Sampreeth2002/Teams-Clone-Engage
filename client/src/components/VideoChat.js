@@ -1,11 +1,21 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Lobby from "./Lobby";
 import Room from "./Room";
-import { v4 as uuidv4 } from "uuid";
+import { AuthContext } from "../Context/AuthContext";
+
 const VideoChat = () => {
+  const authContext = useContext(AuthContext);
+
   const [username, setUsername] = useState("");
   const [roomName, setRoomName] = useState(uuidv4());
   const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    console.log("*******");
+    console.log(authContext.user);
+    setUsername(authContext.user.username);
+  }, []);
 
   const handleUsernameChange = useCallback((event) => {
     setUsername(event.target.value);

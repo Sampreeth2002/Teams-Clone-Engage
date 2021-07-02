@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Lobby = ({
   username,
@@ -11,6 +12,9 @@ const Lobby = ({
     <form onSubmit={handleSubmit}>
       <h2>Enter a room</h2>
       <div>
+        <li>
+          <Link to="/Login">Login Page</Link>
+        </li>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
