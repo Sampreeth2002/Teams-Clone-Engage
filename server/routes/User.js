@@ -54,7 +54,7 @@ Router.post(
       const { _id, username } = req.user; //email if required
       const token = signToken(_id);
       res.cookie("access_token", token, { httpOnly: true, sameSite: true });
-      res.status(200).json({ isAuthenticated: true, user: { username } }); //email if required
+      res.status(200).json({ isAuthenticated: true, user: req.user }); //email if required
     }
   }
 );

@@ -59,6 +59,7 @@ const Room = ({ roomName, token, handleLogout }) => {
       <h2>Room: {roomName}</h2>
       {/* <button onClick={() => copyToClipboard}>Copy Link</button> */}
       <button onClick={handleLogout}>Log out</button>
+      {/* <button ></button> */}
       <div className="local-participant">
         {room ? (
           <Participant
@@ -68,6 +69,7 @@ const Room = ({ roomName, token, handleLogout }) => {
         ) : (
           ""
         )}
+        {/* <button onClick={handleScreenShare}>Screen Share</button> */}
       </div>
       <h3>Remote Participants</h3>
       <div className="remote-participants">{remoteParticipants}</div>
