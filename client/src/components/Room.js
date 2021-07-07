@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Video from "twilio-video";
 import Participant from "./Participant";
+import { LocalVideoTrack } from "twilio-video";
 
 const Room = ({ roomName, token, handleLogout }) => {
   const [room, setRoom] = useState(null);
   const [participants, setParticipants] = useState([]);
   const [toggleAudio, setToggleAudio] = useState(true);
   const [toggleVideo, setToggleVideo] = useState(true);
+  const [screenTracks, setScreenTracks] = useState([]);
 
   useEffect(() => {
     const participantConnected = (participant) => {
@@ -62,6 +64,7 @@ const Room = ({ roomName, token, handleLogout }) => {
 
   const handleVideoToggle = () => {
     room.localParticipant.videoTracks.forEach((track) => {
+      console.log(track);
       if (track.track.isEnabled) {
         track.track.disable();
       } else {
@@ -107,7 +110,6 @@ const Room = ({ roomName, token, handleLogout }) => {
         ) : (
           ""
         )}
-        {/* <button onClick={handleScreenShare}>Screen Share</button> */}
       </div>
       <h3>Remote Participants</h3>
       <div className="remote-participants">{remoteParticipants}</div>

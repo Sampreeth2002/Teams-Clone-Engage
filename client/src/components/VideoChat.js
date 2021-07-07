@@ -40,7 +40,7 @@ const VideoChat = () => {
       }).then((res) => res.json());
       setToken(data.token);
     },
-    [username]
+    [username, roomName]
   );
 
   const handleLogout = useCallback((event) => {

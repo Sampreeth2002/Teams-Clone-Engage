@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Lobby from "./Lobby";
 import Room from "./Room";
+import { v4 as uuidv4 } from "uuid";
 
 const JoinVideoChat = ({ match }) => {
-  const [username, setUsername] = useState("Sampreeth Join");
+  const [username, setUsername] = useState(uuidv4());
   const [roomName, setRoomName] = useState(match.params.id);
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ const JoinVideoChat = ({ match }) => {
     setToken(null);
   }, []);
 
-  let render = "Samptetner";
+  let render = "";
   if (token) {
     render = (
       <Room roomName={roomName} token={token} handleLogout={handleLogout} />
