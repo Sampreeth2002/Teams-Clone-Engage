@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
+import ScreenShareIcon from "@material-ui/icons/ScreenShare";
+import StopScreenShareIcon from "@material-ui/icons/StopScreenShare";
 import Mic from "../assets/icons/microphone.svg";
 import MicOff from "../assets/icons/mute.svg";
 import Video from "../assets/icons/video-camera.svg";
@@ -11,8 +12,10 @@ const Controls = ({
   handleCallDisconnect,
   handleAudioToggle,
   handleVideoToggle,
+  handleScreenShare,
   audio,
   video,
+  screen,
 }) => {
   return (
     <>
@@ -25,6 +28,9 @@ const Controls = ({
         </Circle>
         <Circle onClick={handleVideoToggle}>
           <Image src={video ? Video : VideoOff} />
+        </Circle>
+        <Circle onClick={handleScreenShare}>
+          {screen ? <ScreenShareIcon /> : <StopScreenShareIcon />}
         </Circle>
       </Control>
     </>

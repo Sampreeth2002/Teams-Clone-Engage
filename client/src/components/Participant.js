@@ -14,6 +14,7 @@ const Participant = ({
   const [videoTracks, setVideoTracks] = useState([]);
   const [audioTracks, setAudioTracks] = useState([]);
   const [screenTracks, setScreenTracks] = useState([]);
+  const [toggleScreenShare, setToggleScreenShare] = useState(false);
 
   const ScreenShare = async () => {
     const screenStream = await navigator.mediaDevices.getDisplayMedia();
@@ -21,6 +22,7 @@ const Participant = ({
     var screenTrack = new LocalVideoTrack(track, {
       name: "user-screen",
     });
+    setToggleScreenShare(true);
     participant.publishTrack(screenTrack);
   };
 
@@ -44,6 +46,12 @@ const Participant = ({
       .filter((track) => track !== null);
 
   useEffect(() => {
+    setScreenTracks(
+      trackpubsToTracks(participant.videoTracks).filter(
+        (track) => track.name === "user-screen"
+      )
+    );
+
     setVideoTracks(
       trackpubsToTracks(participant.videoTracks).filter(
         (track) => track.name !== "user-screen"
@@ -82,6 +90,8 @@ const Participant = ({
 
     participant.on("trackSubscribed", trackSubscribed);
     participant.on("trackUnsubscribed", trackUnsubscribed);
+    participant.on("trackDisabled", trackUnsubscribed);
+    participant.on("trackEnabled", trackSubscribed);
 
     return () => {
       setVideoTracks([]);
@@ -94,10 +104,13 @@ const Participant = ({
   useEffect(() => {
     const videoTrack = videoTracks[0];
     if (videoTrack) {
-      videoTrack.attach(videoRef.current);
-      return () => {
-        videoTrack.detach();
-      };
+      if (videoTrack.isSubscribed !== false) {
+        console.log(videoTracks);
+        videoTrack.attach(videoRef.current);
+        return () => {
+          videoTrack.detach();
+        };
+      }
     }
   }, [videoTracks]);
 
@@ -121,22 +134,39 @@ const Participant = ({
     }
   }, [screenTracks]);
 
+  // const handleVideoToggleParticpant = () => {
+  //   const videoResult = handleVideoToggle();
+  //   if (videoResult) {
+  //     const trackUnsubscribed = (track) => {
+  //       if (track.kind === "video") {
+  //         if (track.name !== "user-screen") {
+  //           setVideoTracks((videoTracks) =>
+  //             videoTracks.filter((v) => v !== track)
+  //           );
+  //         }
+  //       }
+  //     };
+  //     participant.on("trackUnsubscribed", trackUnsubscribed);
+  //   }
+  // };
+
   return (
     <div className="participant" style={{ position: "relative" }}>
       <h3>{participant.identity}</h3>
-      {/* {videoOn ? <video ref={videoRef} autoPlay={true} /> : "VideoStoped"} */}
+
       <video ref={videoRef} autoPlay={true} />
       <audio ref={audioRef} autoPlay={true} />
       <video ref={screenRef} autoPlay={true} />
 
-      <button onClick={() => handleScreenShare()}>ScreenShare</button>
       {isLocal && (
         <Controls
           handleCallDisconnect={handleCallDisconnect}
           handleAudioToggle={handleAudioToggle}
           handleVideoToggle={handleVideoToggle}
+          handleScreenShare={handleScreenShare}
           audio={toggleAudio}
           video={toggleVideo}
+          screen={toggleScreenShare}
         />
       )}
     </div>

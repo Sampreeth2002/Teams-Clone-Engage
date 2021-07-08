@@ -8,7 +8,6 @@ const Room = ({ roomName, token, handleLogout }) => {
   const [participants, setParticipants] = useState([]);
   const [toggleAudio, setToggleAudio] = useState(true);
   const [toggleVideo, setToggleVideo] = useState(true);
-  const [screenTracks, setScreenTracks] = useState([]);
 
   useEffect(() => {
     const participantConnected = (participant) => {
@@ -64,7 +63,7 @@ const Room = ({ roomName, token, handleLogout }) => {
 
   const handleVideoToggle = () => {
     room.localParticipant.videoTracks.forEach((track) => {
-      console.log(track);
+      // console.log(track);
       if (track.track.isEnabled) {
         track.track.disable();
       } else {

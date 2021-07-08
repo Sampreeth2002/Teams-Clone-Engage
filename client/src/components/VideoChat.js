@@ -6,14 +6,11 @@ import { AuthContext } from "../Context/AuthContext";
 
 const VideoChat = () => {
   const authContext = useContext(AuthContext);
-
   const [username, setUsername] = useState("");
   const [roomName, setRoomName] = useState(uuidv4());
   const [token, setToken] = useState(null);
 
   useEffect(() => {
-    console.log("*******");
-    console.log(authContext.user);
     setUsername(authContext.user.username);
   }, []);
 
