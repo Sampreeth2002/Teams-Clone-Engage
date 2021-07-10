@@ -2,6 +2,16 @@ import React, { useState, useContext } from "react";
 import AuthService from "../Services/AuthService";
 import Message from "./Message";
 import { AuthContext } from "../Context/AuthContext";
+import {
+  Grid,
+  Paper,
+  Avatar,
+  TextField,
+  Button,
+  Typography,
+  Link,
+} from "@material-ui/core";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 
 const Login = (props) => {
   const [user, setUser] = useState({ username: "", password: "" });
@@ -19,41 +29,75 @@ const Login = (props) => {
       const { isAuthenticated, user, message } = data;
       if (isAuthenticated) {
         authContext.setUser(user);
+
+        console.log(user);
+
         authContext.setIsAuthenticated(isAuthenticated);
-        props.history.push("/");
+        props.history.push("/home");
       } else setMessage(message);
     });
   };
 
+  const paperStyle = {
+    padding: 20,
+    height: "50vh",
+    width: 330,
+    margin: "20px auto",
+  };
+  const avatarStyle = { backgroundColor: "#1bbd7e" };
+  const btnstyle = { margin: "8px 0" };
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <h3>Please sign in</h3>
-        <label htmlFor="username" className="sr-only">
-          Username:{" "}
-        </label>
-        <input
-          type="text"
-          name="username"
-          onChange={onChange}
-          className="form-control"
-          placeholder="Enter Username"
-        />
-        <label htmlFor="password" className="sr-only">
-          Password:{" "}
-        </label>
-        <input
-          type="password"
-          name="password"
-          onChange={onChange}
-          className="form-control"
-          placeholder="Enter Password"
-        />
-        <button className="btn btn-lg btn-primary btn-block" type="submit">
-          Log in{" "}
-        </button>
-      </form>
-      {message ? <Message message={message} /> : null}
+    <div
+      style={{
+        marginTop: "10%",
+      }}
+    >
+      <Grid>
+        <form onSubmit={onSubmit}>
+          <Paper elevation={10} style={paperStyle}>
+            <Grid align="center">
+              <Avatar style={avatarStyle}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <h2>Sign In</h2>
+            </Grid>
+            <TextField
+              label="Username"
+              placeholder="Enter username"
+              onChange={onChange}
+              name="username"
+              fullWidth
+              required
+            />
+            <TextField
+              label="Password"
+              placeholder="Enter password"
+              onChange={onChange}
+              name="password"
+              type="password"
+              fullWidth
+              required
+            />
+            <br />
+            <br />
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              style={btnstyle}
+              fullWidth
+            >
+              Sign in
+            </Button>
+            <br />
+            <br />
+            <Typography>
+              Create a new account <Link href="/register">Sign Up</Link>
+            </Typography>
+          </Paper>
+        </form>
+        {message ? <Message message={message} /> : null}
+      </Grid>
     </div>
   );
 };

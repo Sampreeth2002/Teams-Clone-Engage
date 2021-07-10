@@ -1,0 +1,43 @@
+.lobby {
+  padding-top: 20vh;
+  height: "50vh";
+  width: 330;
+  margin: "20px auto";
+  text-align: center;
+}
+
+.lobby_container {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  justify-items: center;
+  align-items: center;
+}
+
+.enter_room {
+  margin-top: 5vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+.name {
+  margin-top: 5vh;
+}
+
+.submit_button {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.contain {
+  padding: 2px 16px;
+}

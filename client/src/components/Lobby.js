@@ -1,5 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import "./Lobby.css";
+import { makeStyles } from "@material-ui/core/styles";
+import { Button } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
+import TextField from "@material-ui/core/TextField";
 
 const Lobby = ({
   username,
@@ -8,35 +12,44 @@ const Lobby = ({
   handleRoomNameChange,
   handleSubmit,
 }) => {
+  const useStyles = makeStyles({
+    root: {
+      maxWidth: 345,
+    },
+    media: {
+      height: 140,
+    },
+  });
+  const classes = useStyles();
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Enter a room</h2>
-      <div>
-        <li>
-          <Link to="/Login">Login Page</Link>
-        </li>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="field"
-          value={username}
-          onChange={handleUsernameChange}
-          required
-        />
+    <div className="lobby_container">
+      <div className="lobby">
+        <div className="card">
+          <div className="contain">
+            <div className="enter_room">
+              <h2>Enter the room</h2>
+            </div>
+            <form onSubmit={handleSubmit}>
+              <div className="name">
+                <TextField
+                  label="Enter your username"
+                  type="text"
+                  id="field"
+                  value={username}
+                  onChange={handleUsernameChange}
+                  required
+                />
+              </div>
+              <div className="submit_button">
+                <Button variant="contained" type="submit">
+                  Submit
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-
-      {/* <div>
-        <label htmlFor="room">Room name:</label>
-        <input
-          type="text"
-          id="room"
-          value={roomName}
-          onChange={handleRoomNameChange}
-          required
-        />
-      </div> */}
-      <button type="submit">Submit</button>
-    </form>
+    </div>
   );
 };
 

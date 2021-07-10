@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { LocalVideoTrack } from "twilio-video";
 import Controls from "./Controls/index";
+import "./Participant.css";
 
 const Participant = ({
   participant,
@@ -156,7 +157,7 @@ const Participant = ({
 
       <video ref={videoRef} autoPlay={true} />
       <audio ref={audioRef} autoPlay={true} />
-      <video ref={screenRef} autoPlay={true} />
+      {/* <video ref={screenRef} autoPlay={true} /> */}
 
       {isLocal && (
         <Controls

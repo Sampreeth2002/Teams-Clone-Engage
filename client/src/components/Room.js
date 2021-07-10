@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Video from "twilio-video";
 import Participant from "./Participant";
+import "./Room.css";
+import { Button } from "@material-ui/core";
 import { LocalVideoTrack } from "twilio-video";
 
 const Room = ({ roomName, token, handleLogout }) => {
@@ -12,6 +14,9 @@ const Room = ({ roomName, token, handleLogout }) => {
   useEffect(() => {
     const participantConnected = (participant) => {
       setParticipants((prevParticipants) => [...prevParticipants, participant]);
+      console.log("******************");
+      console.log(participant.identity);
+      console.log("******************");
     };
 
     const participantDisconnected = (participant) => {
@@ -79,6 +84,7 @@ const Room = ({ roomName, token, handleLogout }) => {
       participant={participant}
       isLocal={false}
     />
+    // <p>participant.identity</p>
   ));
 
   // const copyToClipboard = (e) => {
@@ -92,8 +98,13 @@ const Room = ({ roomName, token, handleLogout }) => {
     <div className="room">
       <h2>Room: {roomName}</h2>
       {/* <button onClick={() => copyToClipboard}>Copy Link</button> */}
-      <button onClick={handleLogout}>Log out</button>
+
       {/* <button ></button> */}
+      <div className="btn_btn">
+        <Button variant="contained" color="primary" onClick={handleLogout}>
+          END
+        </Button>
+      </div>
       <div className="local-participant">
         {room ? (
           <Participant
@@ -111,6 +122,7 @@ const Room = ({ roomName, token, handleLogout }) => {
         )}
       </div>
       <h3>Remote Participants</h3>
+
       <div className="remote-participants">{remoteParticipants}</div>
     </div>
   );

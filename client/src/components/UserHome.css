@@ -1,0 +1,30 @@
+.userhome {
+  padding: 20;
+  height: "50vh";
+  width: 330;
+  margin: "20px auto";
+  text-align: center;
+}
+
+.userhome_container {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  justify-items: center;
+  align-items: center;
+}
+
+.instant_meeting {
+  margin-top: 5vh;
+}
+
+.join_meeting {
+  text-align: center;
+  align-items: center;
+  margin-top: 4vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.your_teams {
+  margin-top: 4vh;
+}

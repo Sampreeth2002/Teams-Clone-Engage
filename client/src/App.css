@@ -1,18 +1,20 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333e5a;
+  min-height: 100%;
+} */
+/* 
 
 html {
   height: 100%;
 }
 
-body {
-  font-family: Helvetica, Arial, sans-serif;
-  color: #333e5a;
-  min-height: 100%;
-}
+
 
 header {
   background: #f0293e;
@@ -140,4 +142,4 @@ footer {
 
 footer a {
   color: #fff;
-}
+} */
