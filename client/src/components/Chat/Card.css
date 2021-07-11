@@ -31,42 +31,7 @@ body {
   justify-content: space-between;
   cursor: pointer;
   transition: transform 200ms ease-in;
-
-  /* &__image {
-    height: 12rem;
-    width: 100%;
-    object-fit: cover;
-  } */
-
-  /* &__title {
-    padding: 1rem;
-  } */
-
-  /* &__description {
-    padding: 0 1rem;
-  } */
-
-  /* &__btn {
-    padding: 1rem;
-    font-family: inherit;
-    font-weight: bold;
-    font-size: 1rem;
-    margin: 1rem;
-    border: 2px solid var(--clr-primary);
-    background: transparent;
-    color: var(--clr-primary);
-    border-radius: $radius;
-    transition: background 200ms ease-in, color 200ms ease-in;
-  } */
-
-  /* &:hover {
-    transform: scale(1.02);
-  } */
-
-  /* &:hover &__btn {
-    background: var(--clr-primary);
-    color: white;
-  } */
+  padding: 30px;
 }
 
 .card__image {

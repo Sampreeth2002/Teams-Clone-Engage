@@ -23,15 +23,15 @@ const Controls = ({
         <Circle onClick={handleAudioToggle}>
           <Image src={audio ? Mic : MicOff} />
         </Circle>
-        <Circle endCall onClick={handleCallDisconnect}>
+        {/* <Circle endCall onClick={handleCallDisconnect}>
           <Image src={End} />
-        </Circle>
+        </Circle> */}
         <Circle onClick={handleVideoToggle}>
           <Image src={video ? Video : VideoOff} />
         </Circle>
-        <Circle onClick={handleScreenShare}>
+        {/* <Circle onClick={handleScreenShare}>
           {screen ? <ScreenShareIcon /> : <StopScreenShareIcon />}
-        </Circle>
+        </Circle> */}
       </Control>
     </>
   );

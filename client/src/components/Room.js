@@ -3,7 +3,8 @@ import Video from "twilio-video";
 import Participant from "./Participant";
 import "./Room.css";
 import { Button } from "@material-ui/core";
-import { LocalVideoTrack } from "twilio-video";
+import CustomizedDialogs from "./dialog";
+import Chat from "./Chatchat";
 
 const Room = ({ roomName, token, handleLogout }) => {
   const [room, setRoom] = useState(null);
@@ -14,9 +15,6 @@ const Room = ({ roomName, token, handleLogout }) => {
   useEffect(() => {
     const participantConnected = (participant) => {
       setParticipants((prevParticipants) => [...prevParticipants, participant]);
-      console.log("******************");
-      console.log(participant.identity);
-      console.log("******************");
     };
 
     const participantDisconnected = (participant) => {
@@ -84,7 +82,6 @@ const Room = ({ roomName, token, handleLogout }) => {
       participant={participant}
       isLocal={false}
     />
-    // <p>participant.identity</p>
   ));
 
   // const copyToClipboard = (e) => {
@@ -96,10 +93,21 @@ const Room = ({ roomName, token, handleLogout }) => {
 
   return (
     <div className="room">
-      <h2>Room: {roomName}</h2>
-      {/* <button onClick={() => copyToClipboard}>Copy Link</button> */}
+      <i
+        class="far fa-comment-alt"
+        style={{
+          fontSize: "300%",
+          marginLeft: "97%",
+          position: "fixed",
+          marginTop: "10%",
+        }}
+      >
+        <CustomizedDialogs title="Chat Room">
+          <Chat roomId={roomName} />
+        </CustomizedDialogs>
+      </i>
 
-      {/* <button ></button> */}
+      <h2>Room: {roomName}</h2>
       <div className="btn_btn">
         <Button variant="contained" color="primary" onClick={handleLogout}>
           END
@@ -122,7 +130,6 @@ const Room = ({ roomName, token, handleLogout }) => {
         )}
       </div>
       <h3>Remote Participants</h3>
-
       <div className="remote-participants">{remoteParticipants}</div>
     </div>
   );

@@ -24,10 +24,18 @@ function AddUser({ roomId, roomname }) {
   }
 
   return (
-    <div>
+    <div style={{ paddingLeft: "4vw", paddingTop: "3vh" }}>
       <form onSubmit={sendMessage}>
         <Input value={newUser} onChange={(e) => setNewUser(e.target.value)} />
-        <Button type="submit">Send</Button>
+        <br />
+        <Button
+          style={{ marginTop: "2vh" }}
+          variant="contained"
+          color="primary"
+          type="submit"
+        >
+          Add User
+        </Button>
       </form>
     </div>
   );

@@ -73,14 +73,19 @@ const Navbar = () => {
                     </Link>
                   </li>
                 );
+              } else {
+                return (
+                  <Button
+                    className="navbar_button"
+                    onClick={onClickLogoutHandler}
+                  >
+                    Logout
+                  </Button>
+                );
               }
             }
           })}
         </ul>
-
-        <Button className="navbar_button" onClick={onClickLogoutHandler}>
-          Logout
-        </Button>
       </>
     );
   };

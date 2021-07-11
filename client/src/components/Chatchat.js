@@ -1,18 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
-import { db } from "../../firebase";
-import { AuthContext } from "../../Context/AuthContext";
-import AddUser from "./AddUser";
+import { db } from "../firebase";
+import { AuthContext } from "../Context/AuthContext";
 import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { ListItemText } from "@material-ui/core";
-import ListItem from "@material-ui/core/ListItem";
-import "./Team.css";
+import "./Chatchat.css";
 
-function Team() {
+function Team(props) {
   const authContext = useContext(AuthContext);
-  let { roomId } = useParams();
+  let roomId = props.roomId;
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [users, setUsers] = useState([]);
@@ -60,8 +56,6 @@ function Team() {
     setUsername(authContext.user.username);
   }, []);
 
-  const videoMeeting = () => {};
-
   const sendMessage = (e) => {
     e.preventDefault();
     db.collection("rooms").doc(roomId).collection("messages").add({
@@ -74,35 +68,37 @@ function Team() {
   };
 
   return (
-    <div className="chat">
+    <div className="chat_videoMessage">
       <div>
-        <div className="chat_header">
-          <div className="chat_headerInfo">
-            <h3 className="chat-room-name">{roomname} </h3>
+        <div className="chat_header_videoMessage">
+          <div className="chat_headerInfo_videoMessage">
+            <h3 className="chat-room-name_videoMessage">{roomname} </h3>
           </div>
-          <div className="chat_headerRight"></div>
         </div>
-        <div className="chat_body">
+        <div className="chat_body_videoMessage">
           {messages.map((message) => (
             <p
-              className={`chat_message ${
-                message.data.username === username && "chat_receiver"
+              className={`chat_message_videoMessage ${
+                message.data.username === username &&
+                "chat_receiver_videoMessage"
               }`}
             >
               {message.data.username === username ? (
                 ""
               ) : (
-                <span className="chat_name">{message.data.username}</span>
+                <span className="chat_name_videoMessage">
+                  {message.data.username}
+                </span>
               )}
 
               {message.data.text}
-              <span className="chat_timestemp">
+              <span className="chat_timestemp_videoMessage">
                 {new Date(message.data.createdAt?.toDate()).toUTCString()}
               </span>
             </p>
           ))}
         </div>
-        <div className="chat_footer">
+        <div className="chat_footer_videoMessage">
           <form>
             <input
               value={input}
@@ -110,66 +106,11 @@ function Team() {
               type="text"
               placeholder="Type a message"
             />
+
             <Button type="submit" onClick={sendMessage}>
               Send
             </Button>
-            <Link
-              to={`/videoChat/join/${roomId}`}
-              style={{ textDecoration: "none" }}
-            >
-              <Button
-                className="video_meeting"
-                variant="contained"
-                color="primary"
-                onClick={videoMeeting}
-              >
-                Meeting{" "}
-                <i
-                  class="fas fa-video"
-                  style={{ marginTop: "1px", marginLeft: "4px" }}
-                ></i>
-              </Button>
-            </Link>
           </form>
-        </div>
-      </div>
-
-      <div>
-        <div style={{ paddingTop: "7vh", paddingLeft: "5vw" }}>
-          <h2>Team Users</h2>
-        </div>
-        <div>
-          {users.map((user) => (
-            // <ul
-            //   style={{
-            //     paddingLeft: "8vw",
-            //     paddingTop: "3vh",
-            //     fontSize: "25px",
-            //   }}
-            // >
-            //   {user.data.username}
-            // </ul>
-            <ListItem>
-              <ListItemText
-                primary={user.data.username}
-                style={{
-                  paddingLeft: "8vw",
-                }}
-              />
-            </ListItem>
-          ))}
-        </div>
-
-        <div>
-          {users.map((user) => (
-            <div>
-              {user.data.username === username && user.data.admin === true ? (
-                <AddUser roomId={roomId} roomname={roomname} />
-              ) : (
-                ""
-              )}
-            </div>
-          ))}
         </div>
       </div>
     </div>
