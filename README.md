@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Teams Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hosted Website [Teams Clone](https://teams-clone-engage-sam.herokuapp.com)
 
-## Available Scripts
+## About Project
 
-In the project directory, you can run:
+The application Teams Clone is a MERN Stack website which uses React JS in front-end and Node JS in back-end.<br/>
 
-### `npm start`
+The User must first create an account in the website.
+After successfull login the user has 3 options in the home page namely,
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- _Instant Meeting_ <br/>
+- _Join Meeting_ <br/>
+- _Create Team_ <br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Instant Meeting
 
-### `npm test`
+When a user selects on instant meeting ,the user is redirected to the video call room screen where he can copy the **meeting link** and share with other user to join the meeting.<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The users in the meeting can **chat while the video call** is happing in parallel by selecting on chat button. If again the same meeting link is used for next video call, the **chat of previous meeting is reterived**. The user can **turn the video and audio on/off** during the call.
+<br/>
 
-### `npm run build`
+In the Video call more than **100+ users** can join the room.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Join Meeting
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If the host of the video call sends the meeting code to the user, he/she can join the video call room and have same features of instant meeting.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Create Team
 
-### `npm run eject`
+The user can create team by selecting this option and becomes admin of the team. The admin can **add other users** to the team. In the team, the users can **chat and also join the team video call** by selecting the video call button in the team.<br/>
+In the video call of team the recent chat of team is retrived and users can chat parallel to the video call and this chat can reffered again in the team.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This feature is inspired from actual Team application.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application uses
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[JWT Token](https://jwt.io/), [MongoDB](https://www.mongodb.com/cloud/atlas) in server side for authentication.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[Bycrypt.js](https://www.npmjs.com/package/bcrypt) to hash password before saving in database.
 
-## Learn More
+[Twilio API](https://www.twilio.com) for Video Calling Room feature.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Firebase](https://firebase.google.com) for real time data base for Chat feature.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Getting Started
 
-### Code Splitting
+Create .env file and create an account in twilio for the below details [Twilio](https://www.twilio.com) and [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```javascript
+TWILIO_ACCOUNT_SID=
+TWILIO_API_KEY=
+TWILIO_API_SECRET=
 
-### Analyzing the Bundle Size
+ATLAS_URI =
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
 
-### Making a Progressive Web App
+Change Directory into the Server and Client Folder and run _npm install_ to install all the npm dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
 
-### Advanced Configuration
+npm install
+cd client && npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
 
-### Deployment
+## Server Terminal
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+In the server terminal run _npm run start_ to start the server on PORT 3001
 
-### `npm run build` fails to minify
+```bash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+npm run start
+
+```
+
+Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
+
+## Client Terminal
+
+In the client terminal run _npm run build_ to build the project and compile into the _.next_ folder. Then run _npm run start_ to start the production mode server on PORT 3000
+
+```bash
+
+npm run start
+
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

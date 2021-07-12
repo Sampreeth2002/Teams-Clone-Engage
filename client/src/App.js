@@ -1,8 +1,7 @@
 import React from "react";
-// import Navbar from "./components/NavBar/Navbar";
 import Navbar from "./components/Navbar/Navbar";
 import VideoChat from "./components/VideoCall/VideoChat";
-import Home from "./components/Home.js";
+import Home from "./components/Home/Home";
 import UserHome from "./components/UserHome";
 import Login from "./components/Login";
 import Register from "./components/Register";

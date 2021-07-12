@@ -1,0 +1,36 @@
+.home_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.home_text {
+  margin-left: 10vw;
+}
+
+.home_text > p {
+  font-size: 40px;
+}
+
+.microsoft_teams {
+  color: #878ecd;
+  font-size: 55px;
+}
+
+.home_image > img {
+  width: 75%;
+}
+
+.home_buttons {
+  margin-top: 4vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media only screen and (max-width: 600px) {
+  .home_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding-top: 0vh;
+  }
+}

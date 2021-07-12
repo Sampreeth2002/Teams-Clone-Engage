@@ -3,16 +3,6 @@ import AuthService from "../Services/AuthService";
 
 export const AuthContext = createContext();
 
-// "import/no-anonymous-default-export": ["error", {
-//   "allowArray": false,
-//   "allowArrowFunction": false,
-//   "allowAnonymousClass": false,
-//   "allowAnonymousFunction": false,
-//   "allowCallExpression": true, // The true value here is for backward compatibility
-//   "allowLiteral": false,
-//   "allowObject": false
-// }]
-
 const AuthContextFunction = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
