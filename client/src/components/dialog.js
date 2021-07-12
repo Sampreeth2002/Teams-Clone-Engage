@@ -65,9 +65,21 @@ export default function CustomizedDialogs({ children, title }) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Create Team
-      </Button>
+      </Button> */}
+      <i
+        onClick={handleClickOpen}
+        class="fas fa-comment-alt"
+        style={{
+          fontSize: "300%",
+          right: "2px",
+          position: "fixed",
+          marginTop: "10%",
+          zIndex: "4",
+        }}
+      ></i>
+
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

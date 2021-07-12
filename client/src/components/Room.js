@@ -93,19 +93,9 @@ const Room = ({ roomName, token, handleLogout }) => {
 
   return (
     <div className="room">
-      <i
-        class="far fa-comment-alt"
-        style={{
-          fontSize: "300%",
-          marginLeft: "97%",
-          position: "fixed",
-          marginTop: "10%",
-        }}
-      >
-        <CustomizedDialogs title="Chat Room">
-          <Chat roomId={roomName} />
-        </CustomizedDialogs>
-      </i>
+      <CustomizedDialogs title="Chat Room">
+        <Chat roomId={roomName} />
+      </CustomizedDialogs>
 
       <h2>Room: {roomName}</h2>
       <div className="btn_btn">

@@ -20,7 +20,7 @@ function Team(props) {
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot((snapshot) => {
-          setRoomname(snapshot.data().name);
+          setRoomname(snapshot.data()?.name);
         });
 
       db.collection("rooms")

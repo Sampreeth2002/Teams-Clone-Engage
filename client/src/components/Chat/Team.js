@@ -153,7 +153,13 @@ function Team() {
               <ListItemText
                 primary={user.data.username}
                 style={{
-                  paddingLeft: "8vw",
+                  width: "50%",
+                  margin: "0 10px",
+                  textAlign: "center",
+                  padding: "8px 0",
+                  // display: "none",
+                  // borderBottom: "1px solid red",
+                  backgroundColor: "#878ecd",
                 }}
               />
             </ListItem>
