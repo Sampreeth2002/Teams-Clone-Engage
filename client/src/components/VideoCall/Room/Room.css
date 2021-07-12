@@ -37,8 +37,14 @@
 .btn_btn {
   margin-left: 85vw;
   margin-bottom: 5vh;
-  /* position: absolute; */
-  /* margin: 25px; */
+}
+
+.btn_btn > Button {
+  background-color: rgb(230, 37, 37);
+}
+
+.roomname {
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {

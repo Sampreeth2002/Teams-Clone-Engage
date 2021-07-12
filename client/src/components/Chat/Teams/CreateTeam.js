@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../firebase";
+import { db } from "../../../Services/firebase";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 function CreateChat(props) {
@@ -34,7 +34,6 @@ function CreateChat(props) {
       name: teamName,
       date: new Date(),
     });
-    // console.log(teamName);
 
     db.collection("rooms")
       .orderBy("date", "asc")
@@ -46,8 +45,6 @@ function CreateChat(props) {
           }))
         )
       );
-
-    // setLatestInsert("sampreeth");
   };
 
   return (

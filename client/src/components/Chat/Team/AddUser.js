@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { db } from "../../firebase";
+import React, { useState } from "react";
+import { db } from "../../../Services/firebase";
 import { Input } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 
 function AddUser({ roomId, roomname }) {
   const [newUser, setNewUser] = useState("");
-  const [isPresentUserCollection, setIsPresentUserCollection] = useState("");
 
   async function sendMessage(e) {
     e.preventDefault();
@@ -29,7 +28,7 @@ function AddUser({ roomId, roomname }) {
         <Input value={newUser} onChange={(e) => setNewUser(e.target.value)} />
         <br />
         <Button
-          style={{ marginTop: "2vh" }}
+          style={{ marginTop: "2vh", backgroundColor: "#878ECD" }}
           variant="contained"
           color="primary"
           type="submit"

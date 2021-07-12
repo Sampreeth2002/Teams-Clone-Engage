@@ -1,11 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import firebase from "firebase";
-import { db } from "../../firebase";
-import { AuthContext } from "../../Context/AuthContext";
+import { db } from "../../../Services/firebase";
+import { AuthContext } from "../../../Context/AuthContext";
 import AddUser from "./AddUser";
 import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import { ListItemText } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import "./Team.css";
@@ -122,11 +121,15 @@ function Team() {
                 variant="contained"
                 color="primary"
                 onClick={videoMeeting}
+                style={{ backgroundColor: "#878ECD" }}
               >
                 Meeting{" "}
                 <i
                   class="fas fa-video"
-                  style={{ marginTop: "1px", marginLeft: "4px" }}
+                  style={{
+                    marginTop: "1px",
+                    marginLeft: "4px",
+                  }}
                 ></i>
               </Button>
             </Link>
@@ -140,20 +143,15 @@ function Team() {
         </div>
         <div>
           {users.map((user) => (
-            // <ul
-            //   style={{
-            //     paddingLeft: "8vw",
-            //     paddingTop: "3vh",
-            //     fontSize: "25px",
-            //   }}
-            // >
-            //   {user.data.username}
-            // </ul>
             <ListItem>
               <ListItemText
                 primary={user.data.username}
                 style={{
-                  paddingLeft: "8vw",
+                  width: "50%",
+                  margin: "0 10px",
+                  textAlign: "center",
+                  padding: "8px 0",
+                  backgroundColor: "#a6e3e9",
                 }}
               />
             </ListItem>

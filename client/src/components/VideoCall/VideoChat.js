@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useContext, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Lobby from "./Lobby";
-import Room from "./Room";
-import { AuthContext } from "../Context/AuthContext";
+import Lobby from "./Lobby/Lobby";
+import Room from "./Room/Room";
+import { AuthContext } from "../../Context/AuthContext";
 
 const VideoChat = () => {
   const authContext = useContext(AuthContext);

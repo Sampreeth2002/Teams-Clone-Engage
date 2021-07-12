@@ -13,24 +13,28 @@ const Home = () => {
       <div className="userhome">
         <h1>Welcome back {user.username}</h1>
 
-        <div className="instant_meeting">
-          <Link to="/VideoChat" style={{ textDecoration: "none" }}>
-            <Button variant="contained">Instant Meeting</Button>
-          </Link>
-        </div>
-
         <div className="your_teams">
           <Link to={`/teams`} style={{ textDecoration: "none" }}>
-            <Button variant="contained">Your Teams</Button>
+            <Button
+              variant="contained"
+              style={{ padding: "1ww", backgroundColor: "#b9bbdf" }}
+            >
+              Your Teams
+              <i class="fas fa-users" style={{ marginLeft: "5px" }}></i>
+            </Button>
           </Link>
         </div>
 
         <div className="join_meeting">
-          <Link
-            to={`/VideoChat/join/${code}`}
-            style={{ textDecoration: "none" }}
-          >
-            <Button variant="contained">Join Meeting</Button>
+          <Link to="/VideoChat" style={{ textDecoration: "none" }}>
+            <Button
+              variant="contained"
+              className="instant_meeting"
+              style={{ padding: "1vw", backgroundColor: "#b9bbdf" }}
+            >
+              Instant Meeting{" "}
+              <i class="fas fa-video" style={{ marginLeft: "5px" }}></i>
+            </Button>
           </Link>
 
           <TextField
@@ -41,6 +45,13 @@ const Home = () => {
             value={code}
             onChange={(e) => setCode(e.target.value)}
           />
+
+          <Link
+            to={`/VideoChat/join/${code}`}
+            style={{ textDecoration: "none" }}
+          >
+            Join
+          </Link>
         </div>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
-import { db } from "../firebase";
-import { AuthContext } from "../Context/AuthContext";
+import { db } from "../../../Services/firebase";
+import { AuthContext } from "../../../Context/AuthContext";
 import { Button } from "@material-ui/core";
-import "./Chatchat.css";
+import "./VideoCallChat.css";
 
 function Team(props) {
   const authContext = useContext(AuthContext);
@@ -20,7 +20,7 @@ function Team(props) {
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot((snapshot) => {
-          setRoomname(snapshot.data().name);
+          setRoomname(snapshot.data()?.name);
         });
 
       db.collection("rooms")

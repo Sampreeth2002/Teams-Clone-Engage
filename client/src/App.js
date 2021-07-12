@@ -1,19 +1,17 @@
 import React from "react";
 // import Navbar from "./components/NavBar/Navbar";
 import Navbar from "./components/Navbar/Navbar";
-import VideoChat from "./components/VideoChat";
+import VideoChat from "./components/VideoCall/VideoChat";
 import Home from "./components/Home.js";
 import UserHome from "./components/UserHome";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import ChatRoom from "./components/Chat/ChatRoom";
-import HomeChat from "./components/Chat/HomeChat";
-import JoinVideoChat from "./components/JoinVideoChat";
+import JoinVideoChat from "./components/VideoCall/JoinVideoChat";
 import AuthProvider from "./Context/AuthContext";
 import PrivateRoute from "./hocs/PrivateRoute";
 import UnPrivateRoute from "./hocs/UnPrivateRoute";
-import Team from "./components/Chat/Team";
-import Teams from "./components/Chat/Teams";
+import Team from "./components/Chat/Team/Team";
+import Teams from "./components/Chat/Teams/Teams";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
@@ -33,8 +31,6 @@ const App = () => {
               path="/videoChat/join/:id"
               component={JoinVideoChat}
             />
-            {/* <PrivateRoute path="/chatRoom/:roomId" component={} /> */}
-            <PrivateRoute path="/chat" exact component={HomeChat} />
             <PrivateRoute path="/teams" exact component={Teams} />
             <PrivateRoute path="/teams/:roomId" exact component={Team} />
           </Switch>

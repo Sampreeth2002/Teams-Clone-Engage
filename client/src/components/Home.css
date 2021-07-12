@@ -1,0 +1,12 @@
+.home_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.home_text {
+  padding-left: "20vw" !important;
+}
+
+.home_image > img {
+  width: 500px;
+}

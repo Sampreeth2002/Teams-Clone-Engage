@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import "./Navbar.css";
 import { MenuItems } from "./MenuItems";
-import { Button } from "../Button";
+import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import AuthService from "../../Services/AuthService";
 import { AuthContext } from "../../Context/AuthContext";
@@ -28,7 +28,7 @@ const Navbar = () => {
     return (
       <>
         <h1 className="navbar-logo">
-          Teams <i className="fas fa-users"></i>
+          Teams <i className="fas fa-users"></i>{" "}
         </h1>
         <div className="menu-icon" onClick={handleClick}>
           <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>

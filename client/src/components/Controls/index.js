@@ -6,7 +6,6 @@ import Mic from "../assets/icons/microphone.svg";
 import MicOff from "../assets/icons/mute.svg";
 import Video from "../assets/icons/video-camera.svg";
 import VideoOff from "../assets/icons/no-video.svg";
-import End from "../assets/icons/end.svg";
 
 const Controls = ({
   handleCallDisconnect,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { LocalVideoTrack } from "twilio-video";
-import Controls from "./Controls/index";
+import Controls from "../../Controls/index";
 import "./Participant.css";
 
 const Participant = ({
@@ -106,7 +106,6 @@ const Participant = ({
     const videoTrack = videoTracks[0];
     if (videoTrack) {
       if (videoTrack.isSubscribed !== false) {
-        console.log(videoTracks);
         videoTrack.attach(videoRef.current);
         return () => {
           videoTrack.detach();
@@ -134,22 +133,6 @@ const Participant = ({
       };
     }
   }, [screenTracks]);
-
-  // const handleVideoToggleParticpant = () => {
-  //   const videoResult = handleVideoToggle();
-  //   if (videoResult) {
-  //     const trackUnsubscribed = (track) => {
-  //       if (track.kind === "video") {
-  //         if (track.name !== "user-screen") {
-  //           setVideoTracks((videoTracks) =>
-  //             videoTracks.filter((v) => v !== track)
-  //           );
-  //         }
-  //       }
-  //     };
-  //     participant.on("trackUnsubscribed", trackUnsubscribed);
-  //   }
-  // };
 
   return (
     <div className="participant" style={{ position: "relative" }}>

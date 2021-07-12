@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Video from "twilio-video";
-import Participant from "./Participant";
+import Participant from "../Participant/Participant";
 import "./Room.css";
 import { Button } from "@material-ui/core";
 import CustomizedDialogs from "./dialog";
-import Chat from "./Chatchat";
+import Chat from "../VideoCallChat/VideoCallChat";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Room = ({ roomName, token, handleLogout }) => {
   const [room, setRoom] = useState(null);
@@ -84,30 +85,28 @@ const Room = ({ roomName, token, handleLogout }) => {
     />
   ));
 
-  // const copyToClipboard = (e) => {
-  //   this.textArea.select();
-  //   document.execCommand({ roomName });
-  //   e.target.focus();
-  //   // this.setState({ copySuccess: "Copied!" });
-  // };
-
   return (
     <div className="room">
-      <i
-        class="far fa-comment-alt"
-        style={{
-          fontSize: "300%",
-          marginLeft: "97%",
-          position: "fixed",
-          marginTop: "10%",
-        }}
-      >
-        <CustomizedDialogs title="Chat Room">
-          <Chat roomId={roomName} />
-        </CustomizedDialogs>
-      </i>
+      <CustomizedDialogs title="Chat Room">
+        <Chat roomId={roomName} />
+      </CustomizedDialogs>
 
-      <h2>Room: {roomName}</h2>
+      <div className="roomname">
+        <h2>
+          Room: {roomName}
+          <CopyToClipboard
+            text={`https://teams-clone-engage-sam.herokuapp.com/videoChat/join/${roomName}`}
+          >
+            <button style={{ marginLeft: "4px" }}>
+              <i
+                class="fas fa-copy"
+                style={{ fontSize: "30px", padding: "4px", color: "#878ECD" }}
+              ></i>
+            </button>
+          </CopyToClipboard>
+        </h2>
+      </div>
+
       <div className="btn_btn">
         <Button variant="contained" color="primary" onClick={handleLogout}>
           END

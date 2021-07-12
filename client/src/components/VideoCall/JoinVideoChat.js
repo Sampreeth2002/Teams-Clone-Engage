@@ -1,8 +1,6 @@
 import React, { useState, useCallback, useEffect, useContext } from "react";
-import Lobby from "./Lobby";
-import Room from "./Room";
-import { v4 as uuidv4 } from "uuid";
-import { AuthContext } from "../Context/AuthContext";
+import Room from "./Room/Room";
+import { AuthContext } from "../../Context/AuthContext";
 
 const JoinVideoChat = ({ match }) => {
   const authContext = useContext(AuthContext);

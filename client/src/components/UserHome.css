@@ -14,16 +14,12 @@
   align-items: center;
 }
 
-.instant_meeting {
-  margin-top: 5vh;
-}
-
 .join_meeting {
   text-align: center;
   align-items: center;
   margin-top: 4vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 2fr 0.5fr;
 }
 .your_teams {
   margin-top: 4vh;

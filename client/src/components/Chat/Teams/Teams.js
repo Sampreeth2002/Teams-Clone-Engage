@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import Card from "./Card";
+import Card from "../Card/Card";
 import "./Teams.css";
-import { db } from "../../firebase";
-import { AuthContext } from "../../Context/AuthContext";
-import Button from "@material-ui/core/Button";
-import CustomizedDialogs from "../dialog";
+import { db } from "../../../Services/firebase";
+import { AuthContext } from "../../../Context/AuthContext";
+import CustomizedDialogs from "./dialog";
 import CreateTeam from "./CreateTeam";
-import { Link } from "react-router-dom";
+
 function Teams() {
   const authContext = useContext(AuthContext);
-  const [rooms, setRooms] = useState([]);
   const [username, setUsername] = useState("");
   const [userRooms, setuserRooms] = useState([]);
 
@@ -24,7 +22,6 @@ function Teams() {
       snapshot.docChanges().forEach(function (change) {
         if (change.type === "removed") {
         } else if (change.doc.data().username === username) {
-          console.log(change.doc.data().username);
           setuserRooms((oldArray) => [
             ...oldArray,
             {

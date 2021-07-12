@@ -2,7 +2,6 @@ import React from "react";
 import "./Lobby.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
 import TextField from "@material-ui/core/TextField";
 
 const Lobby = ({
@@ -20,7 +19,6 @@ const Lobby = ({
       height: 140,
     },
   });
-  const classes = useStyles();
   return (
     <div className="lobby_container">
       <div className="lobby">
