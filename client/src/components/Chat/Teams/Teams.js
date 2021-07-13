@@ -17,6 +17,8 @@ function Teams() {
   }, []);
   useEffect(() => {
     setuserRooms([]);
+
+    //Gets all rooms of the given username adn add them in array
     var query = db.collection("userRooms");
     query.onSnapshot(function (snapshot) {
       snapshot.docChanges().forEach(function (change) {
@@ -34,6 +36,7 @@ function Teams() {
     });
   }, [username]);
 
+  //Prints all the rooms in cards for given username
   return (
     <>
       <div className="team_container" style={{ marginTop: "2vh" }}>

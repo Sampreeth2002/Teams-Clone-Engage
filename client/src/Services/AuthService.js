@@ -1,4 +1,5 @@
 const AuthService = {
+  //Sends POST request to server to check crediantls
   login: (user) => {
     return fetch("/user/login", {
       method: "post",
@@ -14,6 +15,8 @@ const AuthService = {
       else return { isAuthenticated: false, user: { username: "" } };
     });
   },
+
+  //Sends POST request to server to add username
   register: (user) => {
     return fetch("/user/register", {
       method: "POST",

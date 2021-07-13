@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import AuthService from "../Services/AuthService";
 
 export const AuthContext = createContext();
+//Createing context API for passing info of user ,isAuthenticated
 
 const AuthContextFunction = ({ children }) => {
   const [user, setUser] = useState(null);

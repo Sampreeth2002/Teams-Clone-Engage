@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 
+//Updates user and password and to authService which send to back-end to check credinals
 const Login = (props) => {
   const [user, setUser] = useState({ username: "", password: "" });
   const [message, setMessage] = useState(null);
@@ -24,6 +25,7 @@ const Login = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    //Send username and password to AuthService and return the value
     AuthService.login(user).then((data) => {
       const { isAuthenticated, user, message } = data;
       if (isAuthenticated) {

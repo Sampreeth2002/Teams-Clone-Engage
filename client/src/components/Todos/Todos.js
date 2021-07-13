@@ -12,10 +12,12 @@ function Todos() {
   const [todos, setTodos] = useState([]);
   const authContext = useContext(AuthContext);
 
+  //Sets authenticated username
   useEffect(() => {
     setUsername(authContext.user.username);
   }, []);
 
+  //sets todos with previous saved todos
   useEffect(() => {
     setTodos([]);
     db.collection("todos").onSnapshot(function (querySnapshot) {
@@ -30,10 +32,7 @@ function Todos() {
     });
   }, [username]);
 
-  // const getTodos = () => {
-
-  // };
-
+  //Adds todos in todos collection along with username
   const addTodo = (e) => {
     e.preventDefault();
 
@@ -70,6 +69,7 @@ function Todos() {
         </form>
 
         <div className="todoList">
+          {/* Prints all todos along with styling */}
           {todos.map((todo) => (
             <TodoItem
               todo={todo.todo}

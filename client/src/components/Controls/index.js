@@ -7,6 +7,7 @@ import MicOff from "../assets/icons/mute.svg";
 import Video from "../assets/icons/video-camera.svg";
 import VideoOff from "../assets/icons/no-video.svg";
 
+//Checks mic is off/on to change button style
 const Controls = ({
   handleCallDisconnect,
   handleAudioToggle,
@@ -22,15 +23,9 @@ const Controls = ({
         <Circle onClick={handleAudioToggle}>
           <Image src={audio ? Mic : MicOff} />
         </Circle>
-        {/* <Circle endCall onClick={handleCallDisconnect}>
-          <Image src={End} />
-        </Circle> */}
         <Circle onClick={handleVideoToggle}>
           <Image src={video ? Video : VideoOff} />
         </Circle>
-        {/* <Circle onClick={handleScreenShare}>
-          {screen ? <ScreenShareIcon /> : <StopScreenShareIcon />}
-        </Circle> */}
       </Control>
     </>
   );

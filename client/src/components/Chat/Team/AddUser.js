@@ -3,6 +3,7 @@ import { db } from "../../../Services/firebase";
 import { Input } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 
+//Adduser into the roomId in firebase
 function AddUser({ roomId, roomname }) {
   const [newUser, setNewUser] = useState("");
 

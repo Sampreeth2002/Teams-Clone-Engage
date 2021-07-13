@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 
+//handle submit returns to the room for the given roomId
 const Lobby = ({
   username,
   handleUsernameChange,

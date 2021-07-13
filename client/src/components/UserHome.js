@@ -11,6 +11,7 @@ const Home = () => {
   return (
     <div className="userhome_container">
       <div className="userhome">
+        {/* Gets username of the user */}
         <h1>Welcome back {user.username}</h1>
 
         <div className="your_teams">

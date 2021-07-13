@@ -8,6 +8,8 @@ function CreateChat(props) {
 
   useEffect(() => {
     if (latestInsert) {
+      //adds user and roomname to userRooms collection
+
       if (latestInsert[0].teamId.length > 1) {
         db.collection("userRooms").add({
           roomId: latestInsert[0].teamId,
@@ -15,6 +17,8 @@ function CreateChat(props) {
           username: props.username,
         });
       }
+
+      //adds user has admin for the roomId in rooms collection
 
       db.collection("rooms")
         .doc(latestInsert[0].teamId)
@@ -35,6 +39,8 @@ function CreateChat(props) {
       date: new Date(),
     });
 
+    //returns latest added room in rooms colelction
+
     db.collection("rooms")
       .orderBy("date", "asc")
       .limitToLast(1)
@@ -47,6 +53,7 @@ function CreateChat(props) {
       );
   };
 
+  //Return create chat
   return (
     <div>
       <form onSubmit={onSubmit}>

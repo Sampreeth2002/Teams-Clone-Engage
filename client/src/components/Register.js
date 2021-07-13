@@ -27,6 +27,7 @@ const Register = (props) => {
     };
   }, []);
 
+  //Updates username,password,email states
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -37,6 +38,7 @@ const Register = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    //Sends the details to AuthService for signup request
     AuthService.register(user).then((data) => {
       const { message } = data;
       setMessage(message);

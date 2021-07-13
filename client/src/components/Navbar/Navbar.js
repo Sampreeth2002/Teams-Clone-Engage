@@ -15,6 +15,7 @@ const Navbar = () => {
   const { isAuthenticated, user, setIsAuthenticated, setUser } =
     useContext(AuthContext);
 
+  //Checks user is authem=nticated or not
   const onClickLogoutHandler = () => {
     AuthService.logout().then((data) => {
       if (data.success) {
@@ -24,6 +25,7 @@ const Navbar = () => {
     });
   };
 
+  //If user is not authenticated return unacuthicatedNavbar
   const unauthenticatedNavBar = () => {
     return (
       <>
@@ -48,6 +50,8 @@ const Navbar = () => {
     );
   };
 
+  //If user is authenticated return authenticated navbar
+
   const authenticatedNavBar = () => {
     return (
       <>
@@ -58,6 +62,7 @@ const Navbar = () => {
           <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
         </div>
         <ul className={clicked ? "nav-menu active" : "nav-menu"}>
+          {/* This does not show login signup option if authenticated */}
           {MenuItems.map((item, index) => {
             if (item.title !== "Login") {
               if (item.title !== "Sign Up") {

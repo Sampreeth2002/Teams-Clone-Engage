@@ -20,12 +20,14 @@ function Team() {
 
   useEffect(() => {
     if (roomId) {
+      //Updates roomname using roomid
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot((snapshot) => {
           setRoomname(snapshot.data().name);
         });
 
+      //get previous message of the room
       db.collection("rooms")
         .doc(roomId)
         .collection("messages")
@@ -42,6 +44,7 @@ function Team() {
   }, [roomId]);
 
   useEffect(() => {
+    //gets the users of the given roomid
     db.collection("rooms")
       .doc(roomId)
       .collection("users")
@@ -56,6 +59,7 @@ function Team() {
   }, []);
 
   useEffect(() => {
+    //updates username of user
     setUsername(authContext.user.username);
   }, []);
 
@@ -159,6 +163,7 @@ function Team() {
         </div>
 
         <div>
+          {/* Checks user is admin or not */}
           {users.map((user) => (
             <div>
               {user.data.username === username && user.data.admin === true ? (

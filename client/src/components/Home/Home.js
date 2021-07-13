@@ -3,6 +3,8 @@ import img1 from "../../Images/4457.jpg";
 import "./Home.css";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
+
+//Returns Home Component along with login and signup buttons
 const Home = () => {
   return (
     <div style={{ paddingTop: "20vh" }}>
