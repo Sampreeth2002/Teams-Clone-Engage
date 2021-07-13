@@ -13,7 +13,6 @@ const AuthContextFunction = ({ children }) => {
       setUser(data.user);
       setIsAuthenticated(data.isAuthenticated);
       setIsLoaded(true);
-      console.log(data);
     });
   }, []);
 

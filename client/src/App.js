@@ -11,6 +11,7 @@ import PrivateRoute from "./hocs/PrivateRoute";
 import UnPrivateRoute from "./hocs/UnPrivateRoute";
 import Team from "./components/Chat/Team/Team";
 import Teams from "./components/Chat/Teams/Teams";
+import Todos from "./components/Todos/Todos";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
@@ -32,6 +33,7 @@ const App = () => {
             />
             <PrivateRoute path="/teams" exact component={Teams} />
             <PrivateRoute path="/teams/:roomId" exact component={Team} />
+            <PrivateRoute path="/todos" exact component={Todos} />
           </Switch>
         </div>
       </Router>

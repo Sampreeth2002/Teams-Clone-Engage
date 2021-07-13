@@ -44,11 +44,6 @@ const Navbar = () => {
             );
           })}
         </ul>
-        {/* <Button>Sign up</Button> */}
-        {/* <Link className="nav-links" to="/register">
-          <Button className="navbar_button">Sign up</Button>
-          Sign up
-        </Link> */}
       </>
     );
   };

@@ -1,0 +1,13 @@
+.todos {
+  padding-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todoList {
+  width: 90vw;
+  max-width: 500px;
+  margin-top: 24px;
+}
