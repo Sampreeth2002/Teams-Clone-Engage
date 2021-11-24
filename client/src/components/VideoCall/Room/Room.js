@@ -5,6 +5,7 @@ import "./Room.css";
 import { Button } from "@material-ui/core";
 import CustomizedDialogs from "./dialog";
 import Chat from "../VideoCallChat/VideoCallChat";
+import Notes from "../VideoCallNotes/VideoCallNotes";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Room = ({ roomName, token, handleLogout }) => {
@@ -108,10 +109,18 @@ const Room = ({ roomName, token, handleLogout }) => {
       </div>
 
       <div className="btn_btn">
+        <CustomizedDialogs title="Notes">
+          <Notes roomId={roomName} />
+        </CustomizedDialogs>
+
         <Button variant="contained" color="primary" onClick={handleLogout}>
           END
         </Button>
       </div>
+      {/* <div className="btn_btn">
+        
+      </div> */}
+
       <div className="local-participant">
         {room ? (
           <Participant

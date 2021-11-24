@@ -62,12 +62,20 @@ export default function CustomizedDialogs({ children, title }) {
   const handleClose = () => {
     setOpen(false);
   };
+  const iconName = () => {
+    if (title === "Notes") {
+      console.log("Notes");
+      return "fas fa-sticky-note";
+    } else {
+      return "fas fa-comment-alt";
+    }
+  };
 
   return (
     <div>
       <i
         onClick={handleClickOpen}
-        class="fas fa-comment-alt"
+        class={title === "Notes" ? "fas fa-sticky-note" : "fas fa-comment-alt"}
         style={{
           fontSize: "300%",
           right: "2px",
