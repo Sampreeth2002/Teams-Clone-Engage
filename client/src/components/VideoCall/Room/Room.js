@@ -109,13 +109,12 @@ const Room = ({ roomName, token, handleLogout }) => {
       </div>
 
       <div className="btn_btn">
-        <CustomizedDialogs title="Notes">
-          <Notes roomId={roomName} />
-        </CustomizedDialogs>
-
         <Button variant="contained" color="primary" onClick={handleLogout}>
           END
         </Button>
+        {/* {console.log(roomName)} */}
+
+        {roomName !== "" ? <Notes roomId={roomName} /> : ""}
       </div>
       {/* <div className="btn_btn">
         

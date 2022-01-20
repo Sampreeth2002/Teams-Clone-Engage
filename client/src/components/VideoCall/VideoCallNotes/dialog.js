@@ -65,7 +65,7 @@ export default function CustomizedDialogs({ children, title }) {
 
   return (
     <div>
-      <i
+      {/* <i
         onClick={handleClickOpen}
         class={title === "Notes" ? "fas fa-sticky-note" : "fas fa-comment-alt"}
         style={{
@@ -76,7 +76,16 @@ export default function CustomizedDialogs({ children, title }) {
           zIndex: "4",
           color: "#878ECD",
         }}
-      ></i>
+      ></i> */}
+      <Button
+        variant="outlined"
+        color="primary"
+        style={{ marginTop: "10px" }}
+        onClick={handleClickOpen}
+      >
+        Add Notes
+      </Button>
+
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

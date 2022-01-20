@@ -37,7 +37,7 @@ app.use(cors());
 // Data Base Connection --start
 
 const uri =
-  "mongodb+srv://admin-sam:sampreeth@cluster0.r5spk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  "mongodb+srv://admin:admin@cluster0.9qrno.mongodb.net/vcare?retryWrites=true&w=majority";
 mongoose
   .connect(uri, {
     useNewUrlParser: true,

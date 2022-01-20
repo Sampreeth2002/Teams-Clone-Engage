@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import firebase from "firebase";
 import { db } from "../../../Services/firebase";
 import NoteItem from "./Note";
+import CustomizedDialogs from "./dialog";
 import { AuthContext } from "../../../Context/AuthContext";
 import { Button } from "@material-ui/core";
 import "./VideoCallChat.css";
@@ -58,43 +59,45 @@ function Notes(props) {
   };
 
   return (
-    <div className="chat_videoMessage">
-      <div>
-        <div className="chat_header_videoMessage">
-          <div className="chat_headerInfo_videoMessage">
-            <h3 className="chat-room-name_videoMessage">{roomname} </h3>
+    <CustomizedDialogs>
+      <div className="chat_videoMessage">
+        <div>
+          <div className="chat_header_videoMessage">
+            <div className="chat_headerInfo_videoMessage">
+              <h3 className="chat-room-name_videoMessage">{roomname} </h3>
+            </div>
+          </div>
+          <div className="chat_body_videoMessage">
+            {messages.map((message) => (
+              <NoteItem
+                checkUser={
+                  message.username === username && message.roomname === roomname
+                }
+                note={message.note}
+                createdAt={new Date(message.createdAt?.toDate()).toUTCString()}
+                id={String(
+                  new Date(message.createdAt?.toDate()).toUTCString() + username
+                )}
+              />
+            ))}
+          </div>
+          <div className="chat_footer_videoMessage">
+            <form>
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                type="text"
+                placeholder="Type a message"
+              />
+
+              <Button type="submit" onClick={sendMessage}>
+                Send
+              </Button>
+            </form>
           </div>
         </div>
-        <div className="chat_body_videoMessage">
-          {messages.map((message) => (
-            <NoteItem
-              checkUser={
-                message.username === username && message.roomname === roomname
-              }
-              note={message.note}
-              createdAt={new Date(message.createdAt?.toDate()).toUTCString()}
-              id={String(
-                new Date(message.createdAt?.toDate()).toUTCString() + username
-              )}
-            />
-          ))}
-        </div>
-        <div className="chat_footer_videoMessage">
-          <form>
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              type="text"
-              placeholder="Type a message"
-            />
-
-            <Button type="submit" onClick={sendMessage}>
-              Send
-            </Button>
-          </form>
-        </div>
       </div>
-    </div>
+    </CustomizedDialogs>
   );
 }
 

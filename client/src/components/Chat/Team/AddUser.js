@@ -9,6 +9,8 @@ function AddUser({ roomId, roomname }) {
 
   async function sendMessage(e) {
     e.preventDefault();
+
+    // if(new)
     await db.collection("rooms").doc(roomId).collection("users").add({
       username: newUser,
       admin: false,
